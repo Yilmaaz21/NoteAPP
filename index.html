@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyVault | Student Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="logo">✦ StudyVault</div>
+        <p class="side-label">WORKSPACE</p>
+
+        <button class="nav-btn active" id="homeBtn" onclick="showDashboard()">
+            ◫ Dashboard
+        </button>
+
+        <p class="side-label">YOUR SUBJECTS</p>
+        <div id="subjectList"></div>
+
+        <div class="sidebar-bottom">
+            <span>📚 My Personal Library</span>
+            <small>Organize. Learn. Achieve.</small>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">YOUR STUDY SPACE</p>
+                <h2 id="pageTitle">Dashboard</h2>
+            </div>
+            <div class="top-actions">
+                <input type="search" id="searchInput"
+                    placeholder="Search your notes..."
+                    oninput="searchNotes()">
+                <button class="theme-btn" onclick="toggleTheme()">◐</button>
+            </div>
+        </header>
+
+        <section id="dashboard">
+            <div class="welcome">
+                <div>
+                    <p class="eyebrow">WELCOME TO YOUR LIBRARY</p>
+                    <h1>Learn something<br>new today.</h1>
+                    <p>All your subjects, chapters and notes in one place.</p>
+                </div>
+                <div class="welcome-icon">📚</div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <span>SUBJECTS</span>
+                    <h2 id="totalSubjects">9</h2>
+                </div>
+                <div class="stat-card">
+                    <span>CHAPTERS</span>
+                    <h2 id="totalChapters">0</h2>
+                </div>
+                <div class="stat-card">
+                    <span>COMPLETED</span>
+                    <h2 id="completedChapters">0</h2>
+                </div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <h2>My Subjects</h2>
+                    <p>Select a subject to explore its chapters.</p>
+                </div>
+            </div>
+
+            <div class="subject-grid" id="subjectGrid"></div>
+        </section>
+
+        <section id="subjectPage" class="hidden">
+            <div class="page-intro">
+                <div>
+                    <p class="eyebrow">SUBJECT LIBRARY</p>
+                    <h1 id="subjectHeading">Chemistry</h1>
+                    <p id="chapterCount">Your chapters</p>
+                </div>
+                <button class="primary-btn" onclick="addChapter()">
+                    + Add Chapter
+                </button>
+            </div>
+
+            <div class="chapter-list" id="chapterList"></div>
+        </section>
+
+        <section id="chapterPage" class="hidden">
+            <button class="back-btn" onclick="openSubject(currentSubject)">
+                ← Back to chapters
+            </button>
+
+            <div class="chapter-header">
+                <div>
+                    <p class="eyebrow" id="chapterSubject"></p>
+                    <h1 id="chapterHeading"></h1>
+                </div>
+                <button class="complete-btn" id="completeBtn"
+                    onclick="toggleComplete()">✓ Mark Complete</button>
+            </div>
+
+            <div class="tabs" id="contentTabs">
+                <button class="tab active" data-tab="notes">📖 Notes</button>
+                <button class="tab" data-tab="questions">❓ Questions</button>
+                <button class="tab" data-tab="definitions">📝 Definitions</button>
+                <button class="tab" data-tab="revision">⭐ Revision Points</button>
+            </div>
+
+            <div class="editor-card">
+                <div class="editor-heading">
+                    <div>
+                        <h3 id="editorTitle">Chapter Notes</h3>
+                        <p>Write and organize your study material.</p>
+                    </div>
+                    <span class="saved-label" id="saveStatus">Saved locally</span>
+                </div>
+
+                <textarea id="contentEditor"
+                    placeholder="Start writing your notes here..."></textarea>
+
+                <div class="editor-footer">
+                    <button class="danger-btn" onclick="deleteChapter()">Delete Chapter</button>
+                    <button class="primary-btn" onclick="saveContent()">Save Changes</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="searchPage" class="hidden">
+            <div class="section-heading">
+                <div>
+                    <h2>Search Results</h2>
+                    <p>Find chapters and study material.</p>
+                </div>
+            </div>
+            <div id="searchResults"></div>
+        </section>
+
+        <footer>StudyVault © 2026 · Made for learning.</footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
